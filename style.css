@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #060012;
+  display: flex; justify-content: center; align-items: center;
+  touch-action: none;
+  user-select: none; -webkit-user-select: none;
+}
+
+#gameWrapper {
+  position: relative;
+  width: 100%; height: 100%;
+  max-width: 480px;
+  display: flex; justify-content: center; align-items: center;
+}
+
+#gameCanvas {
+  display: block;
+  cursor: crosshair;
+  background: #060012;
+}
+
+/* CRT scanlines */
+#gameWrapper::after {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.035) 2px, rgba(0,0,0,0.035) 4px);
+  pointer-events: none; z-index: 10;
+}
+
+/* Vignette */
+#gameWrapper::before {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none; z-index: 9;
+}
